@@ -1,0 +1,748 @@
+:root {
+  --accent-color: #28a745;
+  --button-bg-default: #f0f0f0;
+  scrollbar-width: thin;
+  scrollbar-color: #9cffab #272727;
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+  body {
+    background-color: #f1f1f1;
+    font-size: 25px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content:left;
+    background: linear-gradient(#1a1a1a, #272727, #1a1a1a);
+    height: 300vh;
+  }
+
+  .App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 40px;
+    margin-left: 40px;
+    width: 100%;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: row; /* Align children horizontally */
+    justify-content: center; /* Center the content horizontally */
+    align-items: flex-start; /* Align items to the start of the flex container */
+    width: 100%;
+    max-width: 1300px;
+  }
+
+  .user-selection-section {
+    border: 1px solid #ffffff15;
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center align the children */
+    margin-bottom: 20px; /* Add some space below the section */
+    color: white;
+    padding: 15px;
+    border-radius: 10px;
+    width: 210px;
+    margin-top: 35 px;
+  }
+
+  .left-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items:center; /* Center align the child elements horizontally */
+    margin-top:40px;
+  }
+
+  button {
+    width: 100px;
+    margin: 6px;
+    border-radius: 30px;
+    padding: 10px;
+    color: white;
+    border: 2px solid  white;
+    cursor: pointer;
+    transition: background-color 0s;
+    font-size: 22px;
+    box-shadow: 0 4px 0px rgb(255, 255, 255);
+    /* font-weight: bold; */
+    background: transparent;
+    position: relative; /* Allows moving the button */
+  }
+
+  button:hover {
+    background-color: var(--accent-color) !important;
+  }
+
+  button:active {
+    top: 4px; /* Moves the button 4 pixels lower */
+    box-shadow: 0 0px 0px rgb(255, 255, 255) !important; /* Reduced shadow size */
+    background-color: var(--accent-color) !important;
+  }
+
+  .selection-button.selected {
+    background-color: var(--accent-color);
+    color: white;
+  }
+
+  .selection-button.transparent {
+    background-color: transparent;
+    color: white;
+  }
+
+  select {
+    color: white;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-size: 22px;
+    width: 200px;
+    height: 48px;
+    border: 2px solid white;
+    background-color: transparent;  
+    cursor: pointer;
+    box-shadow: 0 2px 0px rgb(255, 255, 255);
+    scrollbar-width: thin !important;
+  }
+
+  select:hover {
+    background-color: var(--accent-color);
+    color: white;
+    cursor: pointer;
+    border: 2px solid white;
+  }
+
+  select.selected {
+    background-color: var(--accent-color);
+    color: white;
+    border: 2px solid white;
+  }
+
+  .search-button {
+    width: 200px;
+    margin-top : 10px;
+    display: block;
+    background-color: transparent; 
+    font-weight: bold;
+    box-shadow: 0 0px 0px rgb(255, 255, 255);
+    animation: boxShadowFadeIn 0.5s ease forwards !important; /* Use forwards to retain the final state */
+  }
+
+  @keyframes boxShadowFadeIn {
+    from {
+      box-shadow: 0 0px 0px rgb(255, 255, 255);
+    }
+    to {
+      box-shadow: 0 4px 0px rgb(255, 255, 255);
+    }
+  }
+
+  .search-button:hover {
+    background-color: #2b773c !important;
+  }
+
+  .chart-loading-placeholder {
+    color: rgba(255, 255, 255, 0.185);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 100%;
+    height: 90%;
+    background: #2727273d;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-top: 35px;
+  }
+
+  .no-data-placeholder {
+    color: orange;
+    display: flex;
+    justify-content:center;
+    align-items:flex-start;
+
+    width: 100%;
+    height: 90%;
+    background: #2727273d;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    margin-top: 35px;
+  }
+
+  @keyframes loadingReflection {
+    from {
+      left: -100%;
+    }
+    to {
+      left: 100%;
+    }
+  }
+
+  .reflection {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right, transparent 25%, #28a745 50%, transparent 75%);
+    animation: loadingReflection 1s infinite;
+  }
+
+  .reflection-2 {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(to right, transparent 25%, #28a745 50%, transparent 75%);
+    animation: loadingReflection 1.1s infinite;
+  }
+
+  .hr-style {
+    border: none;
+    width: 80%;
+    height: 1px;
+    margin-top: 30px;
+    background-color: #4a4a4a;
+  }
+
+  .size-selector {
+    align-items:flex-start;
+    color: white;
+    margin-bottom: 8px;
+    margin-top: 20px;
+  }
+
+  @media (min-width: 1401px) {
+
+    .App {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      margin-top: 40px;
+      margin-left: 9vw;
+      width: 100%;
+    }
+
+    .chart-container {
+      flex-grow: 1;
+      height: 400px;
+      width: 100%;
+    }
+
+    .chart-container-2 {
+      flex-grow: 1;
+      height: 400px;
+      width: 100%;
+    }
+
+    .ppm-display {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      margin-top: 10px;
+      text-align: center;
+      font-size: 80px;
+      font-weight: bold;
+      color: orange;
+      height: 100px;
+    }
+
+    .evaluation-result {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-weight: bold;
+      color: white;
+      font-size: 70px;
+      height: 100px;
+    }
+
+    .evaluation-summary {
+      margin-bottom: 20px;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    .left-section {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items:center;
+      margin-top:40px;
+    }
+  
+  }
+
+  @media (max-width: 1400px) {
+    .chart-container {
+      flex-grow: 1;
+      height: 380px;
+      width: 100%;
+    }
+
+    .chart-container-2 {
+      flex-grow: 1;
+      height: 380px;
+      width: 100%;
+    }
+
+  }
+
+  .input-group {
+    display: flex;
+    align-items: center;
+  }
+
+  .input-container {
+    flex-direction: column;
+    padding: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.082);
+    border-radius: 10px;
+    margin-top: 20px;
+    width: 210px;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.2s ease-in-out;
+  }
+
+  .evaluation-summary {
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+  }
+
+  .ppm-display {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 80px;
+    font-weight: bold;
+    color: orange;
+    height: 100px;
+  }
+
+  .chart-and-ppm-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    height: 100%;
+  }
+
+  .ppm-container {
+    display: flex;
+    flex-direction: column; /* Stacks children vertically */
+    align-items: flex-end; /* Aligns children to the right */
+    justify-content: flex-end; /* Ensures that content is aligned to the bottom */
+    width: 100%; /* Ensures the container takes the full width of its parent */
+  }
+
+  .ppm-value-title {
+    color: rgb(173, 113, 0);
+    margin: 0;
+    font-size: 26px;
+    margin-right: 20px;
+  }
+
+  .ppm-value-title-a {
+    color: rgba(255, 255, 255, 0.562);
+    margin: 0;
+    font-size: 26px;
+    margin-right: 20px;
+  }
+
+  .evaluation-result {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    font-size: 70px;
+    height: 100px;
+  }
+
+  .price-check-title {
+    font-size: 35px;
+    margin: 0px;
+    color: #ffffff;
+  }
+
+  .ppm-value {
+    color: orange;
+    font-size: 82px;
+    margin: 0;
+  }
+
+  .ppm-value-2 {
+    color: var(--accent-color);
+    font-size: 82px;
+    margin: 0;
+  }
+
+  .input-box {
+    width: 150px;
+    background-color:transparent;
+    color: white;
+    height: 25px;
+    border-radius: 6px;
+    font-size: 20px;
+    padding: 8px;
+    margin-left: 12px;
+    margin-top: 10px;
+    margin-right: 8px;
+    border: #ffffffd8 1px solid;
+  }
+
+  .input-symbol {
+    white-space: nowrap; /* Prevent the symbol from wrapping */
+    color: #ffffffaf;
+    font-weight: bold;
+  }
+
+  .evaluate-button {
+    font-weight: bold;
+    background-color: #28a745;
+    color: white;
+    border: 2px white solid;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+    width: 200px;
+    box-shadow: 0 4px 0px rgb(255, 255, 255);
+    margin-top: 10px;
+  }
+
+  .evaluate-button:hover {
+    background-color:#2b773c !important;
+  }
+
+  .text-green {
+    color: #28a745 !important;
+  }
+
+  .text-red {
+    color: #db0d0d !important;
+  }
+
+  .text-green-small {
+    color: #1f7a34 !important;
+  }
+
+  .text-red-small {
+    color: #b41212 !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+@media (hover: none) and (pointer: coarse) {
+  /* Styles for touch devices */
+
+  body {
+    background-color: #f1f1f1;
+    font-size: 100%;
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+
+    background: linear-gradient(#1a1a1a, #272727, #1a1a1a);
+    height: 100vh;
+  }
+
+  .App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 100px;
+    width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the content vertically */
+    align-items: center; /* Center items horizontally */
+    width: 100%; /* Matches the width of .App */
+    max-width: 100%; /* Ensures it doesn't exceed the width of .App */
+  }
+
+  .user-selection-section {
+    font-size: 3vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    padding: 0px; /* Removed padding for centering */
+    margin: 0px auto;
+    margin-bottom: 20px;
+}
+
+  .input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin-bottom: 0px;
+  }
+
+  .selection-row {
+    margin: 0px;
+  }
+
+  .left-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+  }
+
+  button {
+    width: 20vw;
+    height: 3vh;
+    margin: 1vw;
+    border-radius: 100px;
+    padding: 10px;
+    color: white;
+    border: 2px solid  white;
+    transition: background-color 0s;
+    font-size: 3vw;
+    box-shadow: 0 4px 0px rgb(255, 255, 255);
+    background: transparent;
+    position: relative; /* Allows moving the button */
+  }
+
+  button:active {
+    top: 4px;
+    box-shadow: 0 0px 0px rgb(255, 255, 255) !important;
+    background-color: var(--accent-color) !important;
+  }
+
+  .selection-button.selected {
+    background-color: var(--accent-color);
+    color: white;
+  }
+
+  .selection-button.transparent {
+    background-color: transparent;
+    color: white;
+  }
+
+  select {
+    color: white;
+    margin-top: 2vw;
+    border-radius: 10px;
+    font-size: 3vw;
+    width: 25vw;
+    height: 3vh;
+    border: 2px solid white;
+    background-color: transparent;  
+    cursor: pointer;
+    box-shadow: 0 2px 0px rgb(255, 255, 255);
+    scrollbar-width: thin !important;
+  }
+
+  select.selected {
+    background-color: var(--accent-color);
+    color: white;
+    border: 2px solid white;
+  }
+
+  .search-button {
+    height: 4vh;
+    width: 25vw;
+    margin-top: 4vw;
+    display: block;
+    background-color: transparent; 
+    font-weight: bold;
+    box-shadow: 0 0px 0px rgb(255, 255, 255);
+    animation: boxShadowFadeIn 0.5s ease forwards !important; /* Use forwards to retain the final state */
+  }
+
+  .chart-container {
+    flex-grow: 1;
+    height: 40vh;
+    width: 100vw;
+    margin-left: 0px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  .price-check-title {
+    width: calc(100% - 40%);
+    font-size: 5vw;
+    margin: 0px auto;
+    color: #ffffff; 
+    display: block;
+    padding: 1vh;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin: 1vw;
+    height: 3vh;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .fade-in {
+    animation: fadeIn 0.2s ease-in-out;
+  }
+
+  .evaluation-summary {
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+  }
+
+  .ppm-display {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 80px;
+    font-weight: bold;
+    color: orange;
+    height: 100px;
+  }
+
+  .chart-and-ppm-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1000px;
+    height: 100%;
+  }
+
+  .ppm-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+    width: 100%;
+  }
+
+  .ppm-value-title {
+    color: rgb(173, 113, 0);
+    margin: 0;
+    font-size: 26px;
+    margin-right: 20px;
+  }
+
+  .ppm-value-title-a {
+    color: rgba(255, 255, 255, 0.562);
+    margin: 0;
+    font-size: 26px;
+    margin-right: 20px;
+  }
+
+  .evaluation-result {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: bold;
+    color: white;
+    font-size: 70px;
+    height: 100px;
+  }
+
+  .ppm-value {
+    color: orange;
+    font-size: 82px;
+    margin: 0;
+  }
+
+  .ppm-value-2 {
+    color: var(--accent-color);
+    font-size: 82px;
+    margin: 0;
+  }
+
+  .input-box {
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 8px;
+    margin-left: 25%;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 6px;
+    font-size: 2vh;
+  }
+
+  .input-symbol {
+    white-space: nowrap;
+    color: #ffffffaf;
+    font-weight: bold;
+  }
+
+  .evaluate-button {
+    height: 4vh;
+    width: 25vw;
+    margin-top: 4vw;
+    display: block;
+    background-color: transparent; 
+    font-weight: bold;
+    box-shadow: 0 0px 0px rgb(255, 255, 255);
+    animation: boxShadowFadeIn 0.5s ease forwards !important;
+  }
+
+  .apexcharts-tooltip {
+    color: black !important;
+  }
+
+  .text-green {
+    color: #28a745 !important;
+  }
+
+  .text-red {
+    color: #db0d0d !important;
+  }
+
+  .text-green-small {
+    color: #1f7a34 !important;
+  }
+
+  .text-red-small {
+    color: #b41212 !important;
+  }
+
+
+}
